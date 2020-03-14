@@ -42,6 +42,7 @@ textarea {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  border-right: 4px solid gray;
 }
 
 .past {
@@ -60,7 +61,7 @@ textarea {
 }
 
 .saveBtn {
-  border-left: 1px solid black;
+  border-left: 4px solid #01708a;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06aed5; /*#06aed5*/
@@ -73,5 +74,5 @@ textarea {
 }
 
 .description:focus {
-  background-color: #77dd77;
+  background-color: transparent;
 }
