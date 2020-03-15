@@ -77,11 +77,13 @@ function addTimeBlock(id, time, timeBlocStyle) {
     '<div>',
     'col-10 textarea text-left p-0'
   );
+  const inputTaskId = 'task' + id;
   let inputTask = bootStrapHelper.getFormInput(
-    'task' + id,
+    inputTaskId,
     'text',
     'form-control-lg description p-2 mt-3'
   );
+  inputTask.val(localStorage.getItem(inputTaskId));
   inputDiv.append(inputTask);
   timeBlockRow.append(inputDiv);
   let saveBtnDiv = bootStrapHelper.getootStrapGridColumn(
@@ -110,5 +112,6 @@ function saveTaskDetails() {
     .first();
   const taskId = taskInput.attr('id');
   let taskDetails = taskInput.val();
-  //   localStorage.localStorage.setItem('scores',
+  console.log('Saving Task Details : ' + taskDetails);
+  localStorage.setItem(taskId, taskDetails);
 }
