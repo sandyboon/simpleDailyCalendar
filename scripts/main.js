@@ -11,21 +11,47 @@ $(document).ready(function() {
       .local()
       .format('dddd,MMMM,Do')
   );
-
+  //capture the current hour
+  let currentHour = parseInt(
+    moment()
+      .local()
+      .format('H')
+  );
   //Make sure its empty first.
   mainContianer.html('');
   /* Add tome block rows programatically on load */
   for (let i = 9; i < 18; i++) {
     // console.log(moment(i.toString()).format('h'));
-    addTimeBlock(i > 12 ? i - 12 : i);
+    addTimeBlock(timeToDisplay(i), getTimeBlockStyle(i, currentHour));
   }
 });
 
-function addTimeBlock(time) {
+function timeToDisplay(i) {
+  let ampm = moment()
+    .hour(i)
+    .format('A');
+  let displayTime = i > 12 ? i - 12 : i;
+  return displayTime
+    .toString()
+    .concat(' ')
+    .concat(ampm);
+}
+
+function getTimeBlockStyle(time, currentHour) {
+  if (time === currentHour) {
+    return 'row present time-block';
+  } else if (time > currentHour) {
+    return 'row future time-block';
+  } else {
+    return 'row past time-block';
+  }
+}
+
+function addTimeBlock(time, timeBlocStyle) {
   let timeBlockRow = bootStrapHelper.getBootStrapGridRow(
     'timeBlockRow',
     '<div>',
-    'row future time-block'
+    timeBlocStyle
   );
   let hourColumn = bootStrapHelper.getootStrapGridColumn(
     'hourDiv',
