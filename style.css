@@ -75,4 +75,11 @@ textarea {
 
 .description:focus {
   background-color: transparent;
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.highlightBorder {
+  border: 2px solid #4c8bf5;
 }

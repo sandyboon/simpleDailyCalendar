@@ -30,6 +30,16 @@ $(document).ready(function() {
 
   //define savebtn click listener to store data in storage
   $('.saveBtn').on('click', saveTaskDetails);
+  $('.description').on('focus', function() {
+    $(this)
+      .parent()
+      .addClass('highlightBorder');
+  });
+  $('.description').on('focusout', function() {
+    $(this)
+      .parent()
+      .removeClass('highlightBorder');
+  });
 });
 
 function timeToDisplay(i) {
